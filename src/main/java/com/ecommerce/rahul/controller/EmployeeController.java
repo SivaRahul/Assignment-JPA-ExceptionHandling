@@ -2,6 +2,8 @@ package com.ecommerce.rahul.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,9 +40,9 @@ public class EmployeeController {
 	  public ResponseEntity<String> deleteEmployeeById(@PathVariable ("id") int id){
 	    return new ResponseEntity<String>(empService.deleteEmployeeById(id),HttpStatus.OK);
 	  }
-	  @PostMapping
+	  @PostMapping 
 	  @ResponseStatus(HttpStatus.CREATED)
-	  public Employee addEmployee(@RequestBody Employee emp) {
+	  public Employee addEmployee(@Valid @RequestBody Employee emp) {
 	    return empService.addEmployee(emp);
 	  }
 	  @GetMapping("/lastname/{lastName}")

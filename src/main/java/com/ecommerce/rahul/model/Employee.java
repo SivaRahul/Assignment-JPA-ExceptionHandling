@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="employee")
@@ -17,18 +18,23 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "employee_id")
 	private int id;
+	@NotEmpty(message = "FirstName is Mandatory")
 	@Column(name="first_name")
 	private String firstName;
+	@NotEmpty(message = "LastName is Mandatory")
 	@Column(name="last_name")
 	private String lastName;
+	@NotNull(message = "Age is Mandatory")
 	@Column(name = "age") 
     private int age;
+	@NotEmpty(message = "Department is Mandatory")
 	@Column(name="department")
 	private String dept;
+	@NotNull(message = "Salary is Mandatory")
 	@Column(name="salary")
 	private int salary;
 	@Column(name = "email_address")
-    @NotEmpty(message="Provide emailid")
+    @NotEmpty(message="EmailAddress is Mandatory")
     @Email
     private String emailAddress;
 	
